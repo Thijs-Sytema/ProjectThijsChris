@@ -40,6 +40,12 @@ namespace ProjectThijsChris.Controllers
             return View();
         }
 
+        [Route("Overons")]
+        public IActionResult Overons()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
