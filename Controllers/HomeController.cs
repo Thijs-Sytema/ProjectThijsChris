@@ -34,6 +34,12 @@ namespace ProjectThijsChris.Controllers
             return View();
         }
 
+        [Route("Taal")]
+        public IActionResult Taal()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
