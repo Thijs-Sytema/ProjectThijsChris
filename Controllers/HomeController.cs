@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MySql.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjectThijsChris.Models;
 using System.Diagnostics;
