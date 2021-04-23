@@ -1,8 +1,8 @@
-﻿using MySql.Data;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjectThijsChris.Models;
 using System.Diagnostics;
+using MySql.Data;
 
 namespace ProjectThijsChris.Controllers
 {
