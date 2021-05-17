@@ -69,7 +69,7 @@ namespace ProjectThijsChris.Controllers
         public List<string> GetNames()
         {
             // stel in waar de database gevonden kan worden
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=fastfood;Uid=lgg;Pwd=0P%Y9fI2GdO#;";
+            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=mysql2021;";
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<string> names = new List<string>();
