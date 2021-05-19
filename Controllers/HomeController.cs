@@ -26,8 +26,10 @@ namespace ProjectThijsChris.Controllers
             return View(products);
         }
 
-        private object GetProducts()
+        private Films GetProducts(string id)
         {
+            List<Films> Films = new List<Films>();
+
             throw new System.NotImplementedException();
         }
 
@@ -36,9 +38,11 @@ namespace ProjectThijsChris.Controllers
             return View();
         }
 
-        [Route("Films")]
-        public IActionResult Films()
+        [Route("Films/{id}")]
+        public IActionResult Films(string id)
         {
+            var model = GetFilms(id);
+
             return View();
         }
 
