@@ -20,15 +20,10 @@ namespace ProjectThijsChris.Controllers
         public IActionResult Index()
         {
             // alle namen ophalen
-            var products = GetProducts();
+            var names = GetNames();
 
             // stop de namen in de html
-            return View(products);
-        }
-
-        private object GetProducts()
-        {
-            throw new System.NotImplementedException();
+            return View(names);
         }
 
         public IActionResult Privacy()
