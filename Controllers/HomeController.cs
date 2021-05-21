@@ -20,16 +20,14 @@ namespace ProjectThijsChris.Controllers
         public IActionResult Index()
         {
             // alle namen ophalen
-            var products = GetProducts();
+            var names = GetNames();
 
             // stop de namen in de html
-            return View(products);
+            return View(names);
         }
 
-        private Films GetProducts(string id)
+        private object GetProducts()
         {
-            List<Films> Films = new List<Films>();
-
             throw new System.NotImplementedException();
         }
 
@@ -73,7 +71,7 @@ namespace ProjectThijsChris.Controllers
         public List<string> GetNames()
         {
             // stel in waar de database gevonden kan worden
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=mysql2021;";
+            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<string> names = new List<string>();
