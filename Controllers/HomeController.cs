@@ -26,14 +26,21 @@ namespace ProjectThijsChris.Controllers
             return View(names);
         }
 
+        private object GetProducts()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IActionResult Privacy()
         {
             return View();
         }
 
-        [Route("Films")]
-        public IActionResult Films()
+        [Route("Films/{id}")]
+        public IActionResult Films(string id)
         {
+            var model = GetFilms(id);
+
             return View();
         }
 
