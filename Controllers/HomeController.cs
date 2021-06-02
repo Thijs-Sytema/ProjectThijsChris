@@ -5,6 +5,7 @@ using System.Diagnostics;
 using MySql.Data;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using ProjectThijsChris.Controllers.Database;
 
 namespace ProjectThijsChris.Controllers
 {
@@ -122,7 +123,7 @@ namespace ProjectThijsChris.Controllers
             string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
 
             // maak een lege lijst waar we de namen in gaan opslaan
-            List<string> names = new List<string>();
+            List<Product> products = new List<Product>();
 
             // verbinding maken met de database
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -139,17 +140,24 @@ namespace ProjectThijsChris.Controllers
                     // elke keer een regel (of eigenlijk: database rij) lezen
                     while (reader.Read())
                     {
-                        // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
-                        string Name = reader["Naam"].ToString();
+                        Product p = new Product
+                        {
+                            // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Beschikbaarheid = Convert.ToInt32(reader["Beschikbaarheid"]),
+                            Naam = reader["Naam"].ToString(),
+                            Prijs = reader["Prijs"].ToString(),
+                            string Name = reader["Naam"].ToString();
+                    };
 
-                        // voeg de naam toe aan de lijst met namen
-                        names.Add(Name);
-                    }
+                    // voeg de naam toe aan de lijst met namen
+                    products.Add(p);
                 }
+                
             }
 
             // return de lijst met namen
-            return names;
+            return products;
         }
     }
 }
