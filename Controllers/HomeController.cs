@@ -119,7 +119,7 @@ namespace ProjectThijsChris.Controllers
             return names;
         }
 
-        public List<string> GetProducts()
+        public List<Product> GetProducts()
         {
             // stel in waar de database gevonden kan worden
             string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
