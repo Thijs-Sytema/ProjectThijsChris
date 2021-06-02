@@ -67,10 +67,10 @@ namespace ProjectThijsChris.Controllers
         }
 
         [HttpPost]
-        public IActionResult Contact(string voornaam, string achternaam)
+        public IActionResult Contact(Persoon persoon)
         {
-            ViewData["voornaam"] = voornaam;
-            ViewData["achternaam"] = achternaam;
+            ViewData["voornaam"] = persoon.voornaam;
+            ViewData["achternaam"] = persoon.achternaam;
             
             return View();
         }
