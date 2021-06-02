@@ -59,6 +59,13 @@ namespace ProjectThijsChris.Controllers
         }
 
         [Route("Contact")]
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Contact(string voornaam, string achternaam)
         {
             ViewData["voornaam"] = voornaam;
@@ -109,7 +116,7 @@ namespace ProjectThijsChris.Controllers
             return names;
         }
 
-        public List<Product> GetProducts()
+        public List<string> GetProducts()
         {
             // stel in waar de database gevonden kan worden
             string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
