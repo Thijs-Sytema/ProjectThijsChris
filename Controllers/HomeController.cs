@@ -6,6 +6,7 @@ using MySql.Data;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using ProjectThijsChris.Controllers.Database;
+using System;
 
 namespace ProjectThijsChris.Controllers
 {
@@ -21,10 +22,11 @@ namespace ProjectThijsChris.Controllers
         public IActionResult Index()
         {
             // alle namen ophalen
-            var names = GetNames();
+            //var names = GetNames();
+            var products = GetProducts();
 
             // stop de namen in de html
-            return View(names);
+            return View(products);
         }
 
         //private List<Film> GetProducts(string id)
@@ -64,7 +66,7 @@ namespace ProjectThijsChris.Controllers
         {
             ViewData["voornaam"] = voornaam;
             ViewData["achternaam"] = achternaam;
-            
+
             return View();
         }
 
@@ -139,18 +141,19 @@ namespace ProjectThijsChris.Controllers
                             Id = Convert.ToInt32(reader["Id"]),
                             Beschikbaarheid = Convert.ToInt32(reader["Beschikbaarheid"]),
                             Naam = reader["Naam"].ToString(),
-                            Prijs = reader["Prijs"].ToString(),
-                            string Name = reader["Naam"].ToString();
-                    };
+                            Prijs = reader["Prijs"].ToString()
 
-                    // voeg de naam toe aan de lijst met namen
-                    products.Add(p);
+                        };
+
+                        // voeg de naam toe aan de lijst met namen
+                        products.Add(p);
+                    }
+
                 }
-                
-            }
 
-            // return de lijst met namen
-            return products;
+                // return de lijst met namen
+                return products;
+            }
         }
     }
 }
