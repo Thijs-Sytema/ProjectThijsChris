@@ -44,6 +44,12 @@ namespace ProjectThijsChris.Controllers
             return View(model);
         }
 
+        [Route("Films")]
+        public IActionResult Films()
+        {
+            return View();
+        }
+
         [Route("Taal")]
         public IActionResult Taal()
         {
