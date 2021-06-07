@@ -115,7 +115,7 @@ namespace ProjectThijsChris.Controllers
             return names;
         }
 
-<<<<<<< HEAD
+
         //public List<string> GetProducts()
         //{
         //    // stel in waar de database gevonden kan worden
@@ -158,7 +158,7 @@ namespace ProjectThijsChris.Controllers
         //    // return de lijst met namen
         //    return products;
         //}
-=======
+
         public List<Product> GetProducts()
         {
             // stel in waar de database gevonden kan worden
@@ -246,6 +246,5 @@ namespace ProjectThijsChris.Controllers
                 return products[0];
             }
         }
->>>>>>> 7afa1aa8fcca2afd609e24542ddb9785d0a1e0e7
     }
 }
