@@ -1,18 +1,15 @@
-﻿@model List<string>
+﻿@using ProjectThijsChris.Controllers.Database
+@model List<Product>
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1>Alle namen!</h1>
-    @foreach (string naam in Model)
+    @foreach (Product p in Model)
     {
-      <p>@naam</p>
+      <p>@p.Naam - @p.Prijs - @p.Beschikbaarheid.</p>
+      <a href="/film/@p.Id">lees meer</a>
     }
 </div>
-
-<html>
-<head> ProjectThijsChris</head>
-</html>
-
 
