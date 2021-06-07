@@ -8,7 +8,8 @@ namespace ProjectThijsChris.Models
         public string voornaam { get; set; }
         [Required(ErrorMessage = "Gelieve uw achternaam in te vullen")]
         public string achternaam { get; set; }
-        [Required(ErrorMessage = "Gelieve uw emailadres in te vullen")]
+        [Required(ErrorMessage = "Emailadres is verplicht")]
+        [EmailAddress(ErrorMessage = "Geen geldig email adres")]
         public string email { get; set; }
         public string telefoonnummer { get; set; }
         public string adres { get; set; }
