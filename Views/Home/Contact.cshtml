@@ -4,30 +4,12 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<form method="post">
-    <div>Voornaam: <input type="text" name="voornaam" /></div>
-    @Html.ValidationMessageFor(m => m.voornaam)
-    <div>Achternaam: <input type="text" name="achternaam" /></div>
-    @Html.ValidationMessageFor(m => m.achternaam)
-    <div>E-mail: <input type="text" name="email" /></div>
-    @Html.ValidationMessageFor(m => m.email)
-    <div>Telefoonnummer: <input type="text" name="telefoonnummer" /></div>
-    <div>Adres: <input type="text" name="adres" /></div>
-    <div>Beschrijving: <input type="text" name="beschrijving" /></div>
-    <input type="submit" value="verstuur" />
-</form>
-
 <form method="post" class="contactform">
     <div class="form-group">
         @Html.LabelFor(m => m.voornaam)
         @Html.TextBoxFor(m => m.voornaam)
         @Html.ValidationMessageFor(m => m.voornaam)
     </div>
-
-    @if (Model != null)
-    {
-        <p>Hallo @Model.voornaam die achternaam @Model.achternaam heeft</p>
-    }
 
     <div class="form-group">
         @Html.LabelFor(m => m.achternaam)
@@ -39,6 +21,18 @@
         @Html.LabelFor(m => m.email)
         @Html.TextBoxFor(m => m.email)
         @Html.ValidationMessageFor(m => m.email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.telefoonnummer)
+        @Html.TextBoxFor(m => m.telefoonnummer)
+        @Html.ValidationMessageFor(m => m.telefoonnummer)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.adres)
+        @Html.TextBoxFor(m => m.adres)
+        @Html.ValidationMessageFor(m => m.adres)
     </div>
 
     <div class="form-group">
