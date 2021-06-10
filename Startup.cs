@@ -26,6 +26,20 @@ namespace ProjectThijsChris
             services.AddControllersWithViews();
         }
 
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "MyCookie";
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+                options.Cookie.IsEssential = true;
+            });
+
+            services.AddControllersWithViews();
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -45,6 +59,8 @@ namespace ProjectThijsChris
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.Use.Session();
 
             app.UseEndpoints(endpoints =>
             {
