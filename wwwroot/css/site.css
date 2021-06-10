@@ -1,1 +1,13 @@
-﻿
+﻿.topnav {
+    background-color: #B90F0F;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+
+.topnav a {
+    font: Trade Winds;
+    color: #FFFFFF;
+    text-decoration: none;
+}
