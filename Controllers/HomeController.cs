@@ -24,10 +24,10 @@ namespace ProjectThijsChris.Controllers
         {
             // alle namen ophalen
             //var names = GetNames();
-            var products = GetVertoningen();
+            var films = GetFilms();
 
             // stop de namen in de html
-            return View(products);
+            return View(films);
         }
 
 
@@ -41,6 +41,7 @@ namespace ProjectThijsChris.Controllers
         public IActionResult Film(string id)
         {
             var model = GetFilm(Convert.ToInt32(id));
+            // var vertoningen = GetVertoningen();
 
             return View(model);
         }
@@ -114,8 +115,7 @@ namespace ProjectThijsChris.Controllers
         }
 
         public List<Vertoning> GetVertoningen()
-        {
-           
+        {          
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<Vertoning> vertoningen = new List<Vertoning>();
@@ -156,9 +156,50 @@ namespace ProjectThijsChris.Controllers
             }
         }
 
-        public Films GetFilm(int id)
+        public List<Films> GetFilms()
         {
-           
+
+            // maak een lege lijst waar we de namen in gaan opslaan
+            List<Films> films = new List<Films>();
+
+            // verbinding maken met de database
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                // verbinding openen
+                conn.Open();
+
+                // SQL query die we willen uitvoeren
+                MySqlCommand cmd = new MySqlCommand("select * from films", conn);
+
+                // resultaat van de query lezen
+                using (var reader = cmd.ExecuteReader())
+                {
+                    // elke keer een regel (of eigenlijk: database rij) lezen
+                    while (reader.Read())
+                    {
+                        Films v = new Films
+                        {
+                            // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
+                            Id = Convert.ToInt32(reader["id"]),
+                            //Tijd = DateTime.Parse(reader["tijd"].ToString()),
+                            Beschrijving = reader["beschrijving"].ToString(),
+                            //Prijs = Convert.ToInt32(reader["prijs"]),
+                            Genre = reader["genre"].ToString(),
+                            Rating = Convert.ToInt32(reader["rating"])
+                        };
+                        // voeg de naam toe aan de lijst met vertoningen
+                        films.Add(v);
+                    }
+
+                }
+
+                // return de lijst met vertoningen
+                return films;
+            }
+        }
+
+        public Films GetFilm(int id)
+        {          
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<Films> vertoningen = new List<Films>();

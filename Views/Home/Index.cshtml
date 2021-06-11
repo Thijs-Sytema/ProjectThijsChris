@@ -1,14 +1,14 @@
 ﻿@using ProjectThijsChris.Database
-@model List<Vertoning>
+@model List<Films>
 @{
     ViewData["Title"] = "Home Page";
 }
 
     <div class="text-center">
         <h1>Alle namen!</h1>
-        @foreach (Vertoning v in Model)
+        @foreach (Films v in Model)
         {
-            <p>@v.Beschrijving - @v.Prijs - @v.Tijd.</p>
+            <p>@v.Beschrijving</p>
             <a href="/film/@v.Id">lees meer</a>
         }
     </div>
