@@ -58,6 +58,7 @@ namespace ProjectThijsChris.Controllers
                         Film p = new Film
                         {
                             Id = Convert.ToInt32(reader["id"]),
+                            Naam = reader["Naam"].ToString(),
                             Tijd = reader["tijd"].ToString(),
                             Beschrijving = reader["beschrijving"].ToString(),
                             Genre = reader["genre"].ToString(),
@@ -71,7 +72,7 @@ namespace ProjectThijsChris.Controllers
         }
 
         [Route("Films")]
-        public IActionResult Movies()
+        public IActionResult Films()
         {
             List<Film> films = new List<Film>();
             films = GetFilms();
@@ -137,7 +138,7 @@ namespace ProjectThijsChris.Controllers
                         Film p = new Film
                         {
                             Id = Convert.ToInt32(reader["id"]),
-                            Naam = reader["naam"].ToString(),
+                            Naam = reader["Naam"].ToString(),
                             Beschrijving = reader["beschrijving"].ToString(),
                             Genre = reader["genre"].ToString(),
                         };

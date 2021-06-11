@@ -1,26 +1,66 @@
 ﻿@using ProjectThijsChris.Database
 @model List<Film>
-@{
-    ViewData["Title"] = "Home Page";
-}
+@{ ViewData["Title"] = "Home Page"; }
 
-    <div class="text-center">
-        <h1>Alle namen!</h1>
-        @foreach (Film v in Model)
-        {
-            <p>@v.Beschrijving</p>
-            <a href="/film/@v.Id">lees meer</a>
+<head>
+    <script>function setCookie(cname,cvalue,exdays) {
+          var d = new Date();
+          d.setTime(d.getTime() + (exdays*24*60*60));
+          var expires = "expires=" + d.toGMTString();
+          document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
+
+        function getCookie(cname) {
+          var name = cname + "=";
+          var decodedCookie = decodeURIComponent(document.cookie);
+          var ca = decodedCookie.split(';');
+          for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        function checkCookie() {
+          var user=getCookie("username");
+          if (user != "") {
+            alert("Welcome again " + user);
+          } else {
+             user = prompt("Please enter your name:","");
+             if (user != "" && user != null) {
+               setCookie("username", user, 30);
+             }
+          }
+        }</script>
+</head>
+
+<body onload="checkCookie()">
+    <div class="titel">
+            <h1>
+                Synolloos, de beste bioscoop van Nederland
+            </h1>
     </div>
 
-    <div class="topnav">
-        <a href="#">Link</a>
-        <a href="#">Link</a>
-        <a href="#">Link</a>
+    <div class="binnenkort">
+        <h1>
+            Binnenkort verwacht
+        </h1>
+        @foreach (Film f in Model)
+        {
+<div class="filmbox">
+    <div class="filminfo">
+        <h2>@f.Naam</h2>
+        <p> <u>Genre:</u>  @f.Genre</p>
+        <p> <u>Rating:</u>  @f.Rating</p>
+        <p> <u>Tijd:</u>  @f.Tijd</p>
+        <a class="meerbeschrijving" href="films/@f.Id">Read more...</a>
     </div>
-
-    <div class="content">
-        <h2>CSS Template</h2>
-        <p>A topnav, content and a footer.</p>
+</div>
+                <br />}
     </div>
-
+</body>

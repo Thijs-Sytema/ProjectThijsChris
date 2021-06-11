@@ -6,21 +6,35 @@
     <title>@ViewData["Title"] - Synolloos</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/img/logo.png" type="image/gif" sizes="16x16">
+    @RenderSection("style", false)
 </head>
+
 <body>
+    <nav class="stroke">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Films">Films</a></li>
+            <li><a href="/Overons">About</a></li>
+            <li><a href="/Contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="topnav">
-        <a class="active" href="/home">Home</a>
-        <a class="active" href="/films">Films</a>
-        <a class="active" href="/taal">Taal</a>
-        <a class="active" href="/overons">Over ons</a>
-        <a href="/contact">Contact</a>
-        <input type="text" placeholder="Search..">
+    <div class="box">
+        <main role="main" @*class="pb-3"*@>
+            @RenderBody()
+        </main>
+    </div>
 
-    </div>
-    @RenderBody()
-    <div class="footer">
-        <p>Footer</p>
-    </div>
+    <footer>
+        <section class="ft-main">
+            <div class="ft-main-item">
+                <h2 class="ft-title">Contact</h2>
+                <ul>
+                    <li><a href="/contact">Contact us</a></li>
+                </ul>
+            </div>
+        </section>
+    </footer>
 </body>
 </html>
