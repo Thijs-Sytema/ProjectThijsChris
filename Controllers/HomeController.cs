@@ -23,7 +23,7 @@ namespace ProjectThijsChris.Controllers
         {
             // alle namen ophalen
             //var names = GetNames();
-            var products = GetProducts();
+            var products = GetVertoningen();
 
             // stop de namen in de html
             return View(products);
@@ -44,6 +44,12 @@ namespace ProjectThijsChris.Controllers
             return View(model);
         }
 
+        [Route("Films")]
+        public IActionResult Films()
+        {
+            return View();
+        }
+
         [Route("Taal")]
         public IActionResult Taal()
         {
@@ -57,7 +63,6 @@ namespace ProjectThijsChris.Controllers
         }
 
         [Route("Contact")]
-
         public IActionResult Contact()
         {
             return View();
@@ -68,9 +73,10 @@ namespace ProjectThijsChris.Controllers
         public IActionResult Contact(Persoon persoon)
         {
             if (ModelState.IsValid)
+                SavePerson(persoon);
                 return Redirect("/succes");
 
-            return View(persoon);
+            return View();
         }
 
         [Route("succes")]
@@ -79,19 +85,38 @@ namespace ProjectThijsChris.Controllers
             return View();
         }
 
+        private void SavePerson(Persoon person)
+        {
+            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO persoon(voornaam, achternaam, emailadres, adres, beschrijving, telefoonummer) VALUES(?voornaam, ?achternaam, ?emailadres, ?adres, ?beschrijving, ?telefoonnummer)", conn);
+
+                cmd.Parameters.Add("?voornaam", MySqlDbType.Text).Value = person.voornaam;
+                cmd.Parameters.Add("?achternaam", MySqlDbType.Text).Value = person.achternaam;
+                cmd.Parameters.Add("?emailadres", MySqlDbType.Text).Value = person.email;
+                cmd.Parameters.Add("?adres", MySqlDbType.Text).Value = person.adres;
+                cmd.Parameters.Add("?beschrijving", MySqlDbType.Text).Value = person.beschrijving;
+                cmd.Parameters.Add("?telefoonnummer", MySqlDbType.Text).Value = person.telefoonnummer;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public List<string> GetNames()
+        public List<Vertoning> GetVertoningen()
         {
             // stel in waar de database gevonden kan worden
             string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
 
             // maak een lege lijst waar we de namen in gaan opslaan
-            List<string> names = new List<string>();
+            List<Vertoning> vertoningen = new List<Vertoning>();
 
             // verbinding maken met de database
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -100,7 +125,7 @@ namespace ProjectThijsChris.Controllers
                 conn.Open();
 
                 // SQL query die we willen uitvoeren
-                MySqlCommand cmd = new MySqlCommand("select * from product", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from vertoningen", conn);
 
                 // resultaat van de query lezen
                 using (var reader = cmd.ExecuteReader())
@@ -108,148 +133,72 @@ namespace ProjectThijsChris.Controllers
                     // elke keer een regel (of eigenlijk: database rij) lezen
                     while (reader.Read())
                     {
-                        // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
-                        string Name = reader["Naam"].ToString();
-
-                        // voeg de naam toe aan de lijst met namen
-                        names.Add(Name);
-                    }
-                }
-            }
-
-            // return de lijst met namen
-            return names;
-        }
-
-
-        //public List<string> GetProducts()
-        //{
-        //    // stel in waar de database gevonden kan worden
-        //    string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
-
-        //    // maak een lege lijst waar we de namen in gaan opslaan
-        //    List<Product> products = new List<Product>();
-
-        //    // verbinding maken met de database
-        //    using (MySqlConnection conn = new MySqlConnection(connectionString))
-        //    {
-        //        // verbinding openen
-        //        conn.Open();
-
-        //        // SQL query die we willen uitvoeren
-        //        MySqlCommand cmd = new MySqlCommand("select * from product", conn);
-
-        //        // resultaat van de query lezen
-        //        using (var reader = cmd.ExecuteReader())
-        //        {
-        //            // elke keer een regel (of eigenlijk: database rij) lezen
-        //            while (reader.Read())
-        //            {
-        //                Product p = new Product
-        //                {
-        //                    // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
-        //                    Id = Convert.ToInt32(reader["Id"]),
-        //                    Beschikbaarheid = Convert.ToInt32(reader["Beschikbaarheid"]),
-        //                    Naam = reader["Naam"].ToString(),
-        //                    Prijs = reader["Prijs"].ToString(),
-        //                    string Name = reader["Naam"].ToString();
-        //            };
-
-        //            // voeg de naam toe aan de lijst met namen
-        //            products.Add(p);
-        //        }
-                
-        //    }
-
-        //    // return de lijst met namen
-        //    return products;
-        //}
-
-        public List<Product> GetProducts()
-        {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
-
-            // maak een lege lijst waar we de namen in gaan opslaan
-            List<Product> products = new List<Product>();
-
-            // verbinding maken met de database
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                // verbinding openen
-                conn.Open();
-
-                // SQL query die we willen uitvoeren
-                MySqlCommand cmd = new MySqlCommand("select * from product", conn);
-
-                // resultaat van de query lezen
-                using (var reader = cmd.ExecuteReader())
-                {
-                    // elke keer een regel (of eigenlijk: database rij) lezen
-                    while (reader.Read())
-                    {
-                        Product p = new Product
+                        Vertoning v = new Vertoning
                         {
                             // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
-                            Id = Convert.ToInt32(reader["Id"]),
-                            Beschikbaarheid = Convert.ToInt32(reader["Beschikbaarheid"]),
-                            Naam = reader["Naam"].ToString(),
-                            Prijs = reader["Prijs"].ToString()
+                            Id = Convert.ToInt32(reader["id"]),
+                            Tijd = Convert.ToInt32(reader["tijd"]),
+                            Beschrijving = reader["beschrijving"].ToString(),
+                            Prijs = Convert.ToInt32(reader["prijs"]),
+                            Genre = reader["genre"].ToString(),
+                            Rating = Convert.ToInt32(reader["rating"])
+
+                        };
+
+                        // voeg de naam toe aan de lijst met vertoningen
+                        vertoningen.Add(v);
+                    }
+
+                }
+
+                // return de lijst met vertoningen
+                return vertoningen;
+            }
+        }
+
+        public Vertoning GetFilm(int id)
+        {
+            // stel in waar de database gevonden kan worden
+            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
+
+            // maak een lege lijst waar we de namen in gaan opslaan
+            List<Vertoning> vertoningen = new List<Vertoning>();
+
+            // verbinding maken met de database
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                // verbinding openen
+                conn.Open();
+
+                // SQL query die we willen uitvoeren
+                MySqlCommand cmd = new MySqlCommand($"select * from vertoningen where id = {id}", conn);
+
+                // resultaat van de query lezen
+                using (var reader = cmd.ExecuteReader())
+                {
+                    // elke keer een regel (of eigenlijk: database rij) lezen
+                    while (reader.Read())
+                    {
+                        Vertoning v = new Vertoning
+                        {
+                            // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
+                            Id = Convert.ToInt32(reader["id"]),
+                            Tijd = Convert.ToInt32(reader["tijd"]),
+                            Beschrijving = reader["beschrijving"].ToString(),
+                            Prijs = Convert.ToInt32(reader["prijs"]),
+                            Genre = reader["genre"].ToString(),
+                            Rating = Convert.ToInt32(reader["rating"])
 
                         };
 
                         // voeg de naam toe aan de lijst met namen
-                        products.Add(p);
+                        vertoningen.Add(v);
                     }
 
                 }
 
                 // return de lijst met namen
-                return products;
-            }
-        }
-
-        public Product GetFilm(int id)
-        {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
-
-            // maak een lege lijst waar we de namen in gaan opslaan
-            List<Product> products = new List<Product>();
-
-            // verbinding maken met de database
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                // verbinding openen
-                conn.Open();
-
-                // SQL query die we willen uitvoeren
-                MySqlCommand cmd = new MySqlCommand($"select * from product where id = {id}", conn);
-
-                // resultaat van de query lezen
-                using (var reader = cmd.ExecuteReader())
-                {
-                    // elke keer een regel (of eigenlijk: database rij) lezen
-                    while (reader.Read())
-                    {
-                        Product p = new Product
-                        {
-                            // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
-                            Id = Convert.ToInt32(reader["Id"]),
-                            Beschikbaarheid = Convert.ToInt32(reader["Beschikbaarheid"]),
-                            Naam = reader["Naam"].ToString(),
-                            Prijs = reader["Prijs"].ToString()
-
-                        };
-
-                        // voeg de naam toe aan de lijst met namen
-                        products.Add(p);
-                    }
-
-                }
-
-                // return de lijst met namen
-                return products[0];
+                return vertoningen[0];
             }
         }
     }
