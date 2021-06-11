@@ -227,6 +227,11 @@ footer {
     padding: 10px;
 }
 
+.stukje{
+    margin: 10px 0px 10px 0px;
+    padding: 10px;
+}
+
 /* Contact */
 .contact {
     width: 80%;
@@ -255,7 +260,7 @@ input[type=text], select, textarea {
 }
 
 input[type=submit] {
-    background-color: #122f6b;
+    background-color: #ff4c4c;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -263,4 +268,21 @@ input[type=submit] {
     cursor: pointer;
     width: 80%;
     margin-bottom: 20px;
+}
+
+input[type=submit]:hover {
+    opacity: 0.8;
+    transition: opacity .2s ease-out;
+}
+
+/* Bedankt */
+.bedankt {
+    background-image: url("/img/bedankt.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
