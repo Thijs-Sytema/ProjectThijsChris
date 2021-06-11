@@ -5,7 +5,7 @@ using System.Diagnostics;
 using MySql.Data;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using ProjectThijsChris.Controllers.Database;
+using ProjectThijsChris.Database;
 using System;
 
 namespace ProjectThijsChris.Controllers
@@ -13,7 +13,7 @@ namespace ProjectThijsChris.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+  
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -137,14 +137,13 @@ namespace ProjectThijsChris.Controllers
                         {
                             // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
                             Id = Convert.ToInt32(reader["id"]),
-                            Tijd = Convert.ToInt32(reader["tijd"]),
+                            Tijd = DateTime.Parse(reader["tijd"].ToString()),
                             Beschrijving = reader["beschrijving"].ToString(),
                             Prijs = Convert.ToInt32(reader["prijs"]),
                             Genre = reader["genre"].ToString(),
                             Rating = Convert.ToInt32(reader["rating"])
 
                         };
-
                         // voeg de naam toe aan de lijst met vertoningen
                         vertoningen.Add(v);
                     }
@@ -183,7 +182,7 @@ namespace ProjectThijsChris.Controllers
                         {
                             // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
                             Id = Convert.ToInt32(reader["id"]),
-                            Tijd = Convert.ToInt32(reader["tijd"]),
+                            Tijd = DateTime.Parse(reader["tijd"].ToString()),
                             Beschrijving = reader["beschrijving"].ToString(),
                             Prijs = Convert.ToInt32(reader["prijs"]),
                             Genre = reader["genre"].ToString(),
