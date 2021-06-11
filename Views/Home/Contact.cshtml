@@ -17,35 +17,7 @@
     <input type="submit" value="verstuur" />
 </form>
 
-<form method="post" class="contactform">
-    <div class="form-group">
-        @Html.LabelFor(m => m.voornaam)
-        @Html.TextBoxFor(m => m.voornaam)
-        @Html.ValidationMessageFor(m => m.voornaam)
-    </div>
-
     @if (Model != null)
     {
         <p>Hallo @Model.voornaam die achternaam @Model.achternaam heeft</p>
     }
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.achternaam)
-        @Html.TextBoxFor(m => m.achternaam)
-        @Html.ValidationMessageFor(m => m.achternaam)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.email)
-        @Html.TextBoxFor(m => m.email)
-        @Html.ValidationMessageFor(m => m.email)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.beschrijving)
-        @Html.TextBoxFor(m => m.beschrijving)
-        @Html.ValidationMessageFor(m => m.beschrijving)
-    </div>
-
-    <input type="submit" value="verstuur" />
-</form>
