@@ -9,30 +9,30 @@
 }
 
 <div class="contact">
-    <div class="contactcontainer">
+    <div class="contacttext">
         <h1 id="contact">@ViewData["Title"]</h1>
         <form method="post">
-            <label for="fname">First name</label><br />
+            <label for="fname">Voornaam</label><br />
             @Html.ValidationMessageFor(m => m.firstname, "", new { @class = "error" })
-            <input type="text" id="fname" name="firstname" placeholder="Your name" /> <br />
+            <input type="text" id="fname" name="firstname" placeholder="Uw voornaam" /> <br />
 
-            <label for="lname">Last name</label><br />
+            <label for="lname">Achternaam</label><br />
             @Html.ValidationMessageFor(m => m.lastname, "", new { @class = "error" })
-            <input type="text" id="lname" name="lastname" placeholder="Your name" /> <br />
+            <input type="text" id="lname" name="lastname" placeholder="Uw achternaam" /> <br />
 
-            <label for="phone">Phone number</label><br />
+            <label for="phone">Telefoonnummer</label><br />
             @Html.ValidationMessageFor(m => m.phonenumber, "", new { @class = "error" })
-            <input type="text" id="phone" name="phonenumber" placeholder="Your phone number" /><br />
+            <input type="text" id="phone" name="phonenumber" placeholder="Uw telefoonnummer" /><br />
 
-            <label for="email">Email address</label><br />
+            <label for="email">E-mail</label><br />
             @Html.ValidationMessageFor(m => m.email, "", new { @class = "error" })
-            <input type="text" id="email" name="email" placeholder="Your email" /> <br />
+            <input type="text" id="email" name="email" placeholder="Uw E-mail" /> <br />
 
-            <label for="subject">What do you want to contact us about?</label><br />
+            <label for="subject">Wilt u nog iets anders kwijt?</label><br />
             @Html.ValidationMessageFor(m => m.subject, "", new { @class = "error" })
-            <textarea id="subject" name="subject" placeholder="Write something"></textarea><br />
+            <textarea id="subject" name="subject" placeholder="Type hier"></textarea><br />
 
-            <input type="submit" value="Send" />
+            <input type="submit" value="Verstuur" />
 
         </form>
     </div>

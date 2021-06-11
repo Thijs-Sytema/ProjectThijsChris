@@ -159,7 +159,7 @@ namespace ProjectThijsChris.Controllers
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO customer(firstname, lastname, phonenumber, email, subject) VALUES(?firstname, ?lastname, ?phonenumber, ?email, ?subject)", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO klant(firstname, lastname, phonenumber, email, subject) VALUES(?firstname, ?lastname, ?phonenumber, ?email, ?subject)", conn);
                 cmd.Parameters.Add("?firstname", MySqlDbType.VarChar).Value = person.firstname;
                 cmd.Parameters.Add("?lastname", MySqlDbType.VarChar).Value = person.lastname;
                 cmd.Parameters.Add("?phonenumber", MySqlDbType.VarChar).Value = person.phonenumber;
