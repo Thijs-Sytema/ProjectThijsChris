@@ -2,11 +2,13 @@
 
 namespace ProjectThijsChris.Database
 {
-    public class Films
+    public class Film
     {
         public int Id { get; set; }
 
-        public DateTime Tijd { get; set; }
+        public string Naam { get; set; }
+
+        public string Tijd { get; set; }
 
         public string Beschrijving { get; set; }
 

@@ -1,8 +1,18 @@
-﻿@using ProjectThijsChris.Database
-@model Vertoning
-@{
-    ViewData["Title"] = "Films";
-}
-<h1>@Model.Beschrijving</h1>
+﻿@model ProjectThijsChris.Database.Film
+@{ ViewData["Title"] = "Films"; }
 
-<p>Alle film gegevens</p>
+
+<div class="filmbox">
+    <div class="filmcontainer">
+        <div class="header">
+            <h2>@Model.Naam</h2>
+        </div>
+        <div class="filminfo">
+            <p> <u>Genre:</u> @Model.Genre</p>
+            <p class="beschrijving">@Model.Beschrijving</p>
+            <div class="kaartjes">
+                <a href="#">Buy tickets</a>
+            </div>
+        </div>
+    </div>
+</div>
