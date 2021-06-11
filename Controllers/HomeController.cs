@@ -13,7 +13,8 @@ namespace ProjectThijsChris.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-  
+        string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -73,8 +74,10 @@ namespace ProjectThijsChris.Controllers
         public IActionResult Contact(Persoon persoon)
         {
             if (ModelState.IsValid)
+            {
                 SavePerson(persoon);
                 return Redirect("/succes");
+            }
 
             return View();
         }
@@ -87,7 +90,7 @@ namespace ProjectThijsChris.Controllers
 
         private void SavePerson(Persoon person)
         {
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
+           
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -112,8 +115,7 @@ namespace ProjectThijsChris.Controllers
 
         public List<Vertoning> GetVertoningen()
         {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
+           
 
             // maak een lege lijst waar we de namen in gaan opslaan
             List<Vertoning> vertoningen = new List<Vertoning>();
@@ -142,7 +144,6 @@ namespace ProjectThijsChris.Controllers
                             Prijs = Convert.ToInt32(reader["prijs"]),
                             Genre = reader["genre"].ToString(),
                             Rating = Convert.ToInt32(reader["rating"])
-
                         };
                         // voeg de naam toe aan de lijst met vertoningen
                         vertoningen.Add(v);
@@ -155,13 +156,12 @@ namespace ProjectThijsChris.Controllers
             }
         }
 
-        public Vertoning GetFilm(int id)
+        public Films GetFilm(int id)
         {
-            // stel in waar de database gevonden kan worden
-            string connectionString = "Server=172.16.160.21;Port=3306;Database=110444;Uid=110444;Pwd=inf2021sql;";
+           
 
             // maak een lege lijst waar we de namen in gaan opslaan
-            List<Vertoning> vertoningen = new List<Vertoning>();
+            List<Films> vertoningen = new List<Films>();
 
             // verbinding maken met de database
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -178,7 +178,7 @@ namespace ProjectThijsChris.Controllers
                     // elke keer een regel (of eigenlijk: database rij) lezen
                     while (reader.Read())
                     {
-                        Vertoning v = new Vertoning
+                        Films v = new Films
                         {
                             // selecteer de kolommen die je wil lezen. In dit geval kiezen we de kolom "naam"
                             Id = Convert.ToInt32(reader["id"]),
