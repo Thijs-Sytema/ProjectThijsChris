@@ -1,10 +1,12 @@
-﻿namespace ProjectThijsChris.Controllers.Database
+﻿using System;
+
+namespace ProjectThijsChris.Database
 {
     public class Vertoning
     {
         public int Id { get; set; }
 
-        public int Tijd { get; set; }
+        public DateTime Tijd { get; set; }
 
         public string Beschrijving { get; set; }
 
