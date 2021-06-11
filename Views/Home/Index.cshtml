@@ -29,9 +29,9 @@
         function checkCookie() {
           var user=getCookie("username");
           if (user != "") {
-            alert("Welcome again " + user);
+            alert("Welkom terug " + user);
           } else {
-             user = prompt("Please enter your name:","");
+             user = prompt("Vul hier uw naam in:","");
              if (user != "" && user != null) {
                setCookie("username", user, 30);
              }
@@ -59,7 +59,7 @@
         <p> <u>Rating:</u>  @f.Rating</p>
         <p> <u>Tijd:</u>  @f.Tijd</p>
         <p>@f.Beschrijvingkort() ...</p>
-        <a class="meer" href="film/@f.Id">Read more...</a>
+        <a class="meer" href="film/@f.Id">Lees meer...</a>
     </div>
 </div>
                 <br />}

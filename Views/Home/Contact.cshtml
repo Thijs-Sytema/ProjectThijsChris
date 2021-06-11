@@ -29,7 +29,6 @@
             <input type="text" id="email" name="email" placeholder="Uw E-mail" /> <br />
 
             <label for="subject">Wilt u nog iets anders kwijt?</label><br />
-            @Html.ValidationMessageFor(m => m.subject, "", new { @class = "error" })
             <textarea id="subject" name="subject" placeholder="Type hier"></textarea><br />
 
             <input type="submit" value="Verstuur" />
