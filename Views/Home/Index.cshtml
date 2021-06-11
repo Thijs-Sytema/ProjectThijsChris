@@ -1,5 +1,5 @@
 ﻿@using ProjectThijsChris.Controllers.Database
-@model List<Product>
+@model List<Vertoning>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -61,7 +61,7 @@
 <body>
     <div class="text-center">
         <h1>Alle namen!</h1>
-        @foreach (Product p in Model)
+        @foreach (Vertoningen p in Model)
         {
             <p>@p.Naam - @p.Prijs - @p.Beschikbaarheid.</p>
             <a href="/film/@p.Id">lees meer</a>
