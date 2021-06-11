@@ -106,6 +106,40 @@ nav {
                         color: #fff;
                     }
 
+nav .search-container {
+    float: right;
+    position: relative;
+    top: -63px;
+}
+
+nav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+nav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+    nav .search-container button:hover {
+        background: #ccc;
+    }
+
+@media screen and (max-width: 1200px) {
+    nav input[type=text]{
+        display: none;
+    }
+}
+
 /* Footer
 -------------------------------------------------- */
 

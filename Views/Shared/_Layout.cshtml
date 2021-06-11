@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="icon" href="~/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @RenderSection("style", false)
 </head>
 
@@ -18,6 +19,12 @@
             <li><a href="/Overons">About</a></li>
             <li><a href="/Contact">Contact</a></li>
         </ul>
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Zoek..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
     </nav>
 
     <div class="box">
