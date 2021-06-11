@@ -53,12 +53,13 @@
         @foreach (Film f in Model)
         {
 <div class="filmbox">
-    <div class="filminfo">
+    <div class="info">
         <h2>@f.Naam</h2>
         <p> <u>Genre:</u>  @f.Genre</p>
         <p> <u>Rating:</u>  @f.Rating</p>
         <p> <u>Tijd:</u>  @f.Tijd</p>
-        <a class="meerbeschrijving" href="films/@f.Id">Read more...</a>
+        <p>@f.Beschrijvingkort() ...</p>
+        <a class="meer" href="film/@f.Id">Read more...</a>
     </div>
 </div>
                 <br />}

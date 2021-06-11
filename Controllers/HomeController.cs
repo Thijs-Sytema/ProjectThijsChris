@@ -59,9 +59,11 @@ namespace ProjectThijsChris.Controllers
                         {
                             Id = Convert.ToInt32(reader["id"]),
                             Naam = reader["Naam"].ToString(),
-                            Tijd = reader["tijd"].ToString(),
                             Beschrijving = reader["beschrijving"].ToString(),
                             Genre = reader["genre"].ToString(),
+                            Tijd = reader["tijd"].ToString(),
+                            Rating = reader["rating"].ToString(),
+                            Prijs = reader["prijs"].ToString(),
                         };
                         films.Add(p);
                     }
@@ -141,6 +143,9 @@ namespace ProjectThijsChris.Controllers
                             Naam = reader["Naam"].ToString(),
                             Beschrijving = reader["beschrijving"].ToString(),
                             Genre = reader["genre"].ToString(),
+                            Tijd = reader["tijd"].ToString(),
+                            Rating = reader["rating"].ToString(),
+                            Prijs = reader["prijs"].ToString(),
                         };
                         return p;
                     }

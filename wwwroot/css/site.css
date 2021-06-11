@@ -56,7 +56,9 @@ body {
 
 .box {
     width: 100%;
-    background-image: url('/img/achtergrond.jpg')
+    background-image: url('/img/achtergrond.jpg');
+    margin: 0;
+    min-height: 600px;
 }
 
 .footer {
@@ -119,15 +121,16 @@ footer {
 
     footer a {
         text-decoration: none;
-        color: #eee;
+        color: #000;
     }
 
-a:hover {
-    text-decoration: underline;
-}
+    footer a:hover{
+        color: white;
+        text-decoration: none;
+    }
 
 .ft-title {
-    color: #fff;
+    color: black;
     font-family: Consolas;
     padding-bottom: 0.625rem;
 }
@@ -184,7 +187,7 @@ a:hover {
 }
 
 .filmbox {
-    margin: 0px 10% 30px 10%;
+    margin: 0px 10% 0px 10%;
     background-color: #fff;
     border-radius: 30px;
     border-color: black;
@@ -193,6 +196,18 @@ a:hover {
     height: auto;
 }
 
-.header{
-    color: black;
+.filmboxje {
+    margin: 0px 10% 0px 10%;
+    background-color: #fff;
+    border-radius: 30px;
+    border-color: black;
+    border: solid 1px black;
+    padding: 20px 0px 0px 50px;
+    height: auto;
+    position: relative;
+    top: 50px;
+}
+
+.info{
+    padding: 10px 0px 20px 0px;
 }

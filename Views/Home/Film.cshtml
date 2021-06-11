@@ -2,17 +2,16 @@
 @{ ViewData["Title"] = "Films"; }
 
 
-<div class="filmbox">
-    <div class="filmcontainer">
-        <div class="header">
-            <h2>@Model.Naam</h2>
-        </div>
-        <div class="filminfo">
-            <p> <u>Genre:</u> @Model.Genre</p>
-            <p class="beschrijving">@Model.Beschrijving</p>
-            <div class="kaartjes">
-                <a href="#">Buy tickets</a>
-            </div>
+<div class="filmboxje">
+    <div class="info">
+        <h2>@Model.Naam</h2>
+        <p> <u>Genre:</u> @Model.Genre</p>
+        <p> <u>Rating:</u> @Model.Rating</p>
+        <p> <u>Tijd:</u> @Model.Tijd</p>
+        <p> <u>Prijs:</u> @Model.Prijs</p>
+        <p class="beschrijving">@Model.Beschrijving</p>
+        <div class="kaartjes">
+            <a href="#">Koop tickets</a>
         </div>
     </div>
 </div>

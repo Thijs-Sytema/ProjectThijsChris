@@ -11,11 +11,12 @@ namespace ProjectThijsChris.Database
         public string Tijd { get; set; }
 
         public string Beschrijving { get; set; }
+        public string Beschrijvingkort() { return this.Beschrijving.Substring(0, this.Beschrijving.IndexOf(" ", 50)); }
 
-        public int Prijs { get; set; }
+        public string Prijs { get; set; }
 
         public string Genre { get; set; }
 
-        public int Rating { get; set; }
+        public string Rating { get; set; }
     }
 }
